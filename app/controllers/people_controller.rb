@@ -86,14 +86,15 @@ class PeopleController < ApplicationController
   def update
     @person = Person.find(params[:id])
     @person.assign_attributes(person_params)
+
+    puts @person.inspect
     nationbuilder_person = send_person_to_nationbuilder(@person)
     
     if nationbuilder_person[:status]
       @person.save
       @person.update_attributes(pic: nationbuilder_person[:person]["profile_image_url_ssl"])
       @rsvp = Rsvp.find_by(person_id: @person, event_id: @current_event.id, nation_id: current_user.nation.id)
-      puts session[:current_event]
-      puts @rsvp
+
       if !@rsvp.attended
         @rsvp.assign_attributes(attended: true)
         nationbuilder_rsvp = send_rsvp_to_nationbuilder(@rsvp, @person)
@@ -143,7 +144,11 @@ class PeopleController < ApplicationController
     params.require(:person).permit(
       :first_name, 
       :last_name, 
-      :email
+      :email,
+      :phone_number,
+      :work_phone_number,
+      :mobile,
+      :home_zip
     )
   end
 

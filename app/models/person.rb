@@ -18,11 +18,20 @@ class Person < ActiveRecord::Base
       nation_id: nation
     )
 
+    if p["home_address"] 
+      home_zip = p["home_address"]["zip"]
+    else
+      home_zip = nil
+    end
+
     person.update(
       first_name: p["first_name"],
       last_name: p["last_name"],
       email: p["email"],
       phone_number: p["phone"],
+      work_phone_number: p["work_phone_number"],
+      mobile: p["mobile"],
+      home_zip: home_zip,
       pic: p["profile_image_url_ssl"]
     )
 
@@ -36,6 +45,10 @@ class Person < ActiveRecord::Base
         :first_name => self.first_name,
         :last_name => self.last_name,
         :email => self.email,
+        :phone => self.phone_number,
+        :work_phone_number => self.work_phone_number,
+        :mobile => self.mobile,
+        :home_address => {:zip => self.home_zip }
       }
     }
     

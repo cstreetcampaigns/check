@@ -52,7 +52,7 @@ $(document).ready(function() {
 		$('.search .overlay .text').fadeOut(function() {
 			$('.search').addClass('active');
 			setTimeout( function() {
-				$('.search input').focus();
+				$('.search input').attr('placeholder', 'Name or Email').focus();
 			}, 300);
 		});
 	})
@@ -86,6 +86,26 @@ $(document).ready(function() {
 		  data: {
 		  	'id': $(this).data('id'),
 		  	'attended': true
+		  },
+		  success: function(result) {
+		    eval(result);
+		  },
+		});
+	});
+
+
+	$('.checkout').on('click', function(e) {
+		e.preventDefault();
+		e.stopPropagation();
+		console.log($(this).data('id'))
+		var url = '/rsvps/check_out';
+		$.ajax({
+			type: "POST",
+		  url: url,
+		  dataType: 'script',
+		  data: {
+		  	'id': $(this).data('id'),
+		  	'attended': false
 		  },
 		  success: function(result) {
 		    eval(result);

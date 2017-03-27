@@ -53,6 +53,20 @@ class RsvpsController < ApplicationController
   	end
   end
 
+  def check_out
+    @rsvp = Rsvp.find(params[:id])
+    @rsvp.update_attribute('attended', false)
+    nationbuilder_rsvp = send_rsvp_to_nationbuilder(@rsvp, @rsvp.person)
+    puts nationbuilder_rsvp
+    if nationbuilder_rsvp[:status]
+      respond_to do |format|
+        format.js {}
+      end
+    else
+      @rsvp.update_attribute('attended', true)
+    end
+  end
+
   def sync
     @rsvps = Rsvp.where(nation_id: @current_event.nation_id, event_id: @current_event.id).to_a
     @nb = check_sync

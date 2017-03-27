@@ -26,7 +26,24 @@
       </div>
       <div class="row">
         <div class="small-12 small-centered columns email-field">
-          <p>Please note, all fields are required</p>
+            <%= p.text_field 'home_zip', :placeholder=>'Home ZIP / Post code' %>
+        </div>
+      </div>
+      
+      <div class="row">
+        <div class="small-4 columns email-field">
+            <%= p.text_field 'phone_number', :placeholder=>'Phone' %>
+        </div>
+        <div class="small-4 columns email-field">
+            <%= p.text_field 'work_phone_number', :placeholder=>'Work Phone' %>
+        </div>
+        <div class="small-4 columns email-field">
+            <%= p.text_field 'mobile', :placeholder=>'Mobile' %>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="small-12 small-centered columns email-field">
           <%= button_tag(type: "submit", class: "no-style check-login") do %>
               <span class="lnr lnr-arrow-right-circle"></span>
           <% end %>

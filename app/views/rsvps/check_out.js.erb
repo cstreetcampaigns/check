@@ -1,19 +1,17 @@
 $("#rsvp_<%= @rsvp.id %>").replaceWith("<%= escape_javascript(render partial: "rsvps/rsvp", locals: {rsvp: @rsvp}) %>");
 
-
-
-  $('.checkout').on('click', function(e) {
+  $('.checkin').on('click', function(e) {
     e.preventDefault();
     e.stopPropagation();
     console.log($(this).data('id'))
-    var url = '/rsvps/check_out';
+    var url = '/rsvps/check_in';
     $.ajax({
       type: "POST",
       url: url,
       dataType: 'script',
       data: {
         'id': $(this).data('id'),
-        'attended': false
+        'attended': true
       },
       success: function(result) {
         eval(result);
@@ -21,7 +19,8 @@ $("#rsvp_<%= @rsvp.id %>").replaceWith("<%= escape_javascript(render partial: "r
     });
   });
 
-  
+
+
   $('.edit').on('click', function(e) {
     e.preventDefault();
     e.stopPropagation();

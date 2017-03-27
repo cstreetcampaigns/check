@@ -6,17 +6,31 @@
   <div class="row">
     <div class="medium-6 columns name-field">
         <%= p.text_field 'first_name', placeholder: "First Name" %>
-      </label>
     </div>
     <div class="medium-6 columns name-field">
         <%= p.text_field 'last_name', placeholder: "Last Name" %>
-      </label>
     </div>
   </div>
   <div class="row">
     <div class="medium-4 columns email-field">
         <%= p.text_field 'email', :placeholder=>'Email Address' %>
-      </label>
+    </div>
+  </div>
+  <div class="row">
+    <div class="medium-12 columns email-field">
+        <%= p.text_field 'home_zip', :placeholder=>'Home ZIP / Post code' %>
+    </div>
+  </div>
+  
+  <div class="row">
+    <div class="small-4 columns email-field">
+        <%= p.text_field 'phone_number', :placeholder=>'Phone' %>
+    </div>
+    <div class="small-4 columns email-field">
+        <%= p.text_field 'work_phone_number', :placeholder=>'Work Phone' %>
+    </div>
+    <div class="small-4 columns email-field">
+        <%= p.text_field 'mobile', :placeholder=>'Mobile' %>
     </div>
   </div>
 

@@ -50,7 +50,7 @@ class Rsvp < ActiveRecord::Base
 		    "volunteer" => self.volunteer,
 		    "private" => self.is_private,
 		    "canceled" => self.canceled,
-		    "attended" => true,
+		    "attended" => self.attended,
 		    "shift_ids" => self.shift_ids
 		  }
 		}

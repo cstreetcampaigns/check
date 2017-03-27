@@ -4,5 +4,5 @@
   <% if r.canceled %></div><% end %>
   <% if r.attended %><span class="lnr lnr-checkmark-circle"></span><% end %>
   <% if r.guests_count > 0 %><div class="guests-count">+ <%= r.guests_count %></div><% end %>
-  <div style="display:none!important"><% if r.attended %><% else %>nyci<% end %></div>
+  <div style="display:none!important"><% if r.attended %><% else %>nyci<% end %> <%= r.person.email %></div>
 <% end %>

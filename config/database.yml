@@ -17,7 +17,7 @@
 development:
   adapter: postgresql
   encoding: unicode
-  database: cstreetEventCheckInApp_development
+  database: cstreetcheckv2_development
   pool: 5
   username: 
   password:
@@ -46,7 +46,7 @@ development:
 test:
   adapter: postgresql
   encoding: unicode
-  database: cstreetEventCheckInApp_test
+  database: cstreetcheckv2_test
   pool: 5
   username: 
   password:
@@ -54,7 +54,7 @@ test:
 production:
   adapter: postgresql
   encoding: unicode
-  database: cstreetEventCheckInApp_production
+  database: cstreetcheckv2_production
   pool: 5
   username: 
   password:

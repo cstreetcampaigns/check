@@ -3,25 +3,11 @@
   <%= link_to "Create New User", new_user_path, class: "button" %>
 </h3>
 
-<table>
-  <thead>
-    <tr>
-      <th class="text-center">Email</th>
-      <th class="text-center">Nation</th>
-      <th class="text-center">Active?</th>
-      <th class="text-center">Event Count</th>
-      <th class="text-center">Edit</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @users.each do |u| %>
-    <tr>
-      <td><%= u.email %></td>
-      <td><%= u.nation.name %></td>
-      <td><%= u.active %></td>
-      <td><%= u.nation.events.count %></td>
-      <td><%= link_to "Edit", edit_user_path(u.id), class:"button" %></td>
-    </tr>
-    <% end %>
-  </tbody>
-</table>
+<% @users.each do |u| %>
+  <div>Email: <%= u.email %></div>
+  <div>Nation: <%= u.nation.name %></div>
+  <div>Status: <% if u.active %>Active<% else %>Canceled<% end %></div>
+  <div>Event Count: <%= u.nation.events.count %></div>
+  <div><%= link_to "Edit", edit_user_path(u.id), class:"button" %></div>
+  <hr/>
+<% end %>
