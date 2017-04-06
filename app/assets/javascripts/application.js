@@ -46,19 +46,11 @@ function addRSVP() {
 	})
 }
 
-$(document).ready(function() {
-
-	$('.search').on('click', function() {
-		$('.search .overlay .text').fadeOut(function() {
-			$('.search').addClass('active');
-			setTimeout( function() {
-				$('.search input').attr('placeholder', 'Name or Email').focus();
-			}, 300);
-		});
-	})
+function activateButtons() {
 
 	$('.add').on('click', function(e) {
 		e.preventDefault();
+		$('#working').show();
 		var url = '/people/new';
 		$.ajax({
 			type: "GET",
@@ -77,6 +69,7 @@ $(document).ready(function() {
 	$('.checkin').on('click', function(e) {
 		e.preventDefault();
 		e.stopPropagation();
+		$('#working').show();
 		console.log($(this).data('id'))
 		var url = '/rsvps/check_in';
 		$.ajax({
@@ -97,6 +90,7 @@ $(document).ready(function() {
 	$('.checkout').on('click', function(e) {
 		e.preventDefault();
 		e.stopPropagation();
+		$('#working').show();
 		console.log($(this).data('id'))
 		var url = '/rsvps/check_out';
 		$.ajax({
@@ -116,7 +110,7 @@ $(document).ready(function() {
 	$('.edit').on('click', function(e) {
 		e.preventDefault();
 		e.stopPropagation();
-
+		$('#working').show();
 		person_id = $(this).data('person-id');
 		rsvp_id = $(this).data('rsvp-id');
 		var url = '/people/' + person_id + '/edit';
@@ -132,6 +126,20 @@ $(document).ready(function() {
 		  },
 		});
 	});
+}
+
+$(document).ready(function() {
+
+	$('.search').on('click', function() {
+		$('.search .overlay .text').fadeOut(function() {
+			$('.search').addClass('active');
+			setTimeout( function() {
+				$('.search input').attr('placeholder', 'Name or Email').focus();
+			}, 300);
+		});
+	})
+
+	activateButtons();
 
 	function activateThinking() {
 		$('#thinking').show();

@@ -18,7 +18,11 @@
   </div>
   <div class="row">
     <div class="medium-12 columns email-field">
+      <% if person.home_zip %>
+        <%= p.text_field 'home_zip', :placeholder=>'Home ZIP / Post code', required: "" %>
+      <% else %>
         <%= p.text_field 'home_zip', :placeholder=>'Home ZIP / Post code' %>
+      <% end %>
     </div>
   </div>
   

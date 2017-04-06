@@ -38,3 +38,5 @@ $(document).bind('ajax:success', function(data, status, xhr) {
   $("#errors").empty().append('<%= escape_javascript(render("shared/error_messages", object: @person)) %>');
 
 });
+
+$('#working').hide();

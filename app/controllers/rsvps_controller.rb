@@ -55,10 +55,10 @@ class RsvpsController < ApplicationController
 
   def check_out
     @rsvp = Rsvp.find(params[:id])
-    @rsvp.update_attribute('attended', false)
-    nationbuilder_rsvp = send_rsvp_to_nationbuilder(@rsvp, @rsvp.person)
+    nationbuilder_rsvp = send_rsvp_to_nationbuilder(@rsvp, @rsvp.person, false)
     puts nationbuilder_rsvp
     if nationbuilder_rsvp[:status]
+      @rsvp.update_attribute('attended', false)
       respond_to do |format|
         format.js {}
       end

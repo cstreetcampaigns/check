@@ -1,3 +1,5 @@
 $('#modal').html("<%= j(render :partial => 'person_update', :locals => {:person => @person, :host_id => nil, welcome_message: @welcome_message }) %><a class='close-reveal-modal' aria-label='Close'><span class='lnr lnr-cross-circle'></span>Close</a>" );
 
 $('#modal').foundation('reveal', 'open');
+
+$('#working').hide();
